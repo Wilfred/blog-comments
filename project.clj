@@ -1,5 +1,5 @@
 (defproject shouter "0.0.1"
-  :description "Heroku's hello world with PosstreSQL"
+  :description "Heroku's hello world with PostreSQL"
   :dependencies [[org.clojure/clojure "1.2.1"]
                  [postgresql/postgresql "8.4-702.jdbc4"]
                  [org.clojure/java.jdbc "0.0.3-SNAPSHOT"]
