@@ -1,11 +1,11 @@
-(ns blog-comments.views.shouts
+(ns blog-comments.views.comments
   (:use [hiccup.core :only [html escape-html]]
         [hiccup.page-helpers :only [doctype]]
         [hiccup.form-helpers :only [form-to label text-area text-field submit-button]])
   (:require [blog-comments.views.layout :as layout]))
 
-(defn shout-form []
-  [:div {:id "shout-form" :class "sixteen columns alpha omega"}
+(defn comment-form []
+  [:div {:id "comment-form" :class "sixteen columns alpha omega"}
    (form-to [:post "/"]
             (label "author" "Name")
             (text-field "author")
@@ -13,16 +13,16 @@
             (text-area "body")
             (submit-button "SHOUT!"))])
 
-(defn display-shouts [shouts]
-  [:div {:id "shouts sixteen columns alpha omega"}
+(defn display-comments [comments]
+  [:div {:id "comments sixteen columns alpha omega"}
    (map
-    (fn [shout]
-      (list [:h2 {:class "shout"} (escape-html (:body shout))]
-            [:p (:created_at shout)]))
-    shouts)])
+    (fn [comment]
+      (list [:h2 {:class "comment"} (escape-html (:body comment))]
+            [:p (:created_at comment)]))
+    comments)])
 
-(defn index [shouts]
+(defn index [comments]
   (layout/common "SHOUTER"
-                 (shout-form)
+                 (comment-form)
                  [:div {:class "clear"}]
-                 (display-shouts shouts)))
+                 (display-comments comments)))

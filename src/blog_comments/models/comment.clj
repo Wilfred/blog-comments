@@ -1,4 +1,4 @@
-(ns blog-comments.models.shout
+(ns blog-comments.models.comment
   (:use [blog-comments.models.base :only (db)])
   (:require [clojure.java.jdbc :as sql]))
 

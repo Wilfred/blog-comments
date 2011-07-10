@@ -3,11 +3,11 @@
   (:require [compojure.route :as route]
             [compojure.handler :as handler]
             [ring.adapter.jetty :as ring]
-            [blog-comments.controllers.shouts]
+            [blog-comments.controllers.comments]
             [blog-comments.views.layout :as layout]))
 
 (defroutes routes
-  blog-comments.controllers.shouts/routes
+  blog-comments.controllers.comments/routes
   (route/resources "/")
   (route/not-found (layout/four-oh-four)))
 
