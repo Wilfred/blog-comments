@@ -1,5 +1,5 @@
 (ns shouter.views.shouts
-  (:use [hiccup.core :only [html h]]
+  (:use [hiccup.core :only [html escape-html]]
         [hiccup.page-helpers :only [doctype]]
         [hiccup.form-helpers :only [form-to label text-area submit-button]])
   (:require [shouter.views.layout :as layout]))
@@ -14,7 +14,7 @@
 (defn display-shouts [shouts]
   [:div {:id "shouts sixteen columns alpha omega"}
    (map
-    (fn [shout] [:h2 {:class "shout"} (h (:body shout))])
+    (fn [shout] [:h2 {:class "shout"} (escape-html (:body shout))])
     shouts)])
 
 (defn index [shouts]
