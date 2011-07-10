@@ -20,6 +20,19 @@
       ["select * from comments where approved = false order by id desc"]
       (into [] results))))
 
+(defn approve! [id]
+  (try
+    (sql/with-connection db
+      (sql/transaction
+       (sql/update-values :comments
+                          ["id = ?" id]
+                          {:approved true})))
+    (catch Exception e
+      (do (println e)
+          (let [cause (.getCause e)]
+            (do (println cause)
+                (println (.getNextException cause))))))))
+
 (defn create [body author]
   (sql/with-connection db
     (sql/insert-values :comments [:body :author] [body author])))

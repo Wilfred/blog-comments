@@ -18,13 +18,15 @@
    (map
     (fn [comment]
       (list [:h2 {:class "comment"} (escape-html (:body comment))]
-            [:p "Created at: " (:created_at comment) " by" (:author comment)]))
+            [:p "Created at: " (:created_at comment) " by " (:author comment)]))
     comments)])
 
 (defn display-all-comments [approved-comments unapproved-comments]
   (letfn [(display-comment [comment]
             (list [:h2 {:class "comment"} (escape-html (:body comment))]
-                  [:p "Created at: " (:created_at comment) " by " (:author comment)]))]
+                  [:p "Created at: " (:created_at comment) " by " (:author comment)]
+                  (if (not (:approved comment))
+                    [:a {:href (str "/comments/" (:id comment) "/approve")} "Approve this comment"])))]
   [:div
    [:h2 "Unapproved comments"]
    (map display-comment unapproved-comments)
