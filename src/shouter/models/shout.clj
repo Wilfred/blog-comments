@@ -8,6 +8,6 @@
       ["select * from comments order by id desc"]
       (into [] results))))
 
-(defn create [shout]
+(defn create [body author]
   (sql/with-connection db
-    (sql/insert-values :comments [:body] [shout])))
+    (sql/insert-values :comments [:body :author] [body author])))

@@ -7,8 +7,10 @@
 (defn shout-form []
   [:div {:id "shout-form" :class "sixteen columns alpha omega"}
    (form-to [:post "/"]
-            (label "shout" "What do you want to SHOUT?")
-            (text-area "shout")
+            (label "body" "Comment")
+            (text-area "body")
+            (label "author" "Name")
+            (text-area "author")
             (submit-button "SHOUT!"))])
 
 (defn display-shouts [shouts]

@@ -9,9 +9,10 @@
   (view/index (model/all)))
 
 (defn create [params]
-  (let [shout (:shout params)]
-    (when-not (str/blank? shout)
-      (model/create shout)))
+  (let [body (:body params)
+        author (:author params)]
+    (when-not (and (str/blank? body) (str/blank? author))
+      (model/create body author)))
   (ring/redirect "/"))
 
 (defroutes routes

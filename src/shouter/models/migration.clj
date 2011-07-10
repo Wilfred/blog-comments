@@ -4,13 +4,18 @@
 
 (defn create-comments-table []
   (sql/with-connection db
+    (try
+      (sql/drop-table :shouts)
+      (catch Exception _))
+    (try
+      (sql/drop-table :comments)
+      (catch Exception _))
     (sql/create-table :comments
                       [:id :serial "PRIMARY KEY"]
                       [:body :varchar "NOT NULL"]
+                      [:author :varchar "NOT NULL"]
                       [:created_at :timestamp "NOT NULL" "DEFAULT CURRENT_TIMESTAMP"])
-    (try
-      (sql/drop-table :shouts)
-      (catch Exception _))))
+    ))
 
 (defn -main []
   (print "Migrating database...") (flush)
