@@ -8,6 +8,9 @@
 (defn index []
   (view/index (model/all)))
 
+(defn comments-all []
+  (view/comments-all (model/all)))
+
 (defn create [params]
   (let [body (:body params)
         author (:author params)]
@@ -17,4 +20,5 @@
 
 (defroutes routes
   (GET  "/" [] (index))
+  (GET  "/comments/all" [] (comments-all))
   (POST "/" {params :params} (create params)))

@@ -18,11 +18,15 @@
    (map
     (fn [comment]
       (list [:h2 {:class "comment"} (escape-html (:body comment))]
-            [:p (:created_at comment)]))
+            [:p "Created at: " (:created_at comment) " by " (:author comment)]))
     comments)])
 
 (defn index [comments]
   (layout/common "SHOUTER"
                  (comment-form)
                  [:div {:class "clear"}]
+                 (display-comments comments)))
+
+(defn comments-all [comments]
+  (layout/common "View all comments"
                  (display-comments comments)))
