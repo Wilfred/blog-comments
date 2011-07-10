@@ -24,7 +24,7 @@
 (defn display-all-comments [approved-comments unapproved-comments]
   (letfn [(display-comment [comment]
             (list [:h2 {:class "comment"} (escape-html (:body comment))]
-                  [:p "Created at: " (:created_at comment) " by" (:author comment)]))]
+                  [:p "Created at: " (:created_at comment) " by " (:author comment)]))]
   [:div
    [:h2 "Unapproved comments"]
    (map display-comment unapproved-comments)
