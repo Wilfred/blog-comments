@@ -1,5 +1,5 @@
-(ns shouter.models.migration
-  (:use [shouter.models.base :only (db)])
+(ns blog-comments.models.migration
+  (:use [blog-comments.models.base :only (db)])
   (:require [clojure.java.jdbc :as sql]))
 
 (defn create-comments-table []

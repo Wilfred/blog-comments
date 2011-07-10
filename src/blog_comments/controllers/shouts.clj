@@ -1,9 +1,9 @@
-(ns shouter.controllers.shouts
+(ns blog-comments.controllers.shouts
   (:use [compojure.core :only [defroutes GET POST]])
   (:require [clojure.string :as str]
             [ring.util.response :as ring]
-            [shouter.views.shouts :as view]
-            [shouter.models.shout :as model]))
+            [blog-comments.views.shouts :as view]
+            [blog-comments.models.shout :as model]))
 
 (defn index []
   (view/index (model/all)))

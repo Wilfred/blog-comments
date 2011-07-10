@@ -1,5 +1,5 @@
-(ns shouter.models.shout
-  (:use [shouter.models.base :only (db)])
+(ns blog-comments.models.shout
+  (:use [blog-comments.models.base :only (db)])
   (:require [clojure.java.jdbc :as sql]))
 
 (defn all []

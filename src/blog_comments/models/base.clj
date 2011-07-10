@@ -1,4 +1,4 @@
-(ns shouter.models.base
+(ns blog-comments.models.base
   (:require [clojure.string :as str]
             [clojure.java.jdbc :as sql])
   (:import (java.net URI)))

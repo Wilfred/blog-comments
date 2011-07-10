@@ -1,4 +1,4 @@
-(ns shouter.views.layout
+(ns blog-comments.views.layout
   (:use [hiccup.core :only [html]]
         [hiccup.page-helpers :only [doctype include-css]]))
 

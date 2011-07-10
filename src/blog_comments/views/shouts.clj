@@ -1,8 +1,8 @@
-(ns shouter.views.shouts
+(ns blog-comments.views.shouts
   (:use [hiccup.core :only [html escape-html]]
         [hiccup.page-helpers :only [doctype]]
         [hiccup.form-helpers :only [form-to label text-area text-field submit-button]])
-  (:require [shouter.views.layout :as layout]))
+  (:require [blog-comments.views.layout :as layout]))
 
 (defn shout-form []
   [:div {:id "shout-form" :class "sixteen columns alpha omega"}

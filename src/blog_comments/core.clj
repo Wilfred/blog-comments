@@ -1,13 +1,13 @@
-(ns shouter.core
+(ns blog-comments.core
   (:use [compojure.core :only [defroutes]])
   (:require [compojure.route :as route]
             [compojure.handler :as handler]
             [ring.adapter.jetty :as ring]
-            [shouter.controllers.shouts]
-            [shouter.views.layout :as layout]))
+            [blog-comments.controllers.shouts]
+            [blog-comments.views.layout :as layout]))
 
 (defroutes routes
-  shouter.controllers.shouts/routes
+  blog-comments.controllers.shouts/routes
   (route/resources "/")
   (route/not-found (layout/four-oh-four)))
 

@@ -1,1 +1,1 @@
-web: lein run -m shouter.core
+web: lein run -m blog-comments.core
