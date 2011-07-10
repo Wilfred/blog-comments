@@ -8,7 +8,7 @@
 
 (defroutes routes
   blog-comments.controllers.comments/routes
-  (route/resources "/")
+  (route/resources "/") ; static file handlers
   (route/not-found (layout/four-oh-four)))
 
 (def application (handler/site routes))
