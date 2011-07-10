@@ -9,7 +9,7 @@
   (view/index (model/all)))
 
 (defn comments-all []
-  (view/comments-all (model/all)))
+  (view/comments-all (model/approved) (model/unapproved)))
 
 (defn create [params]
   (let [body (:body params)

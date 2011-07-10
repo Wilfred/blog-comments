@@ -8,6 +8,18 @@
       ["select * from comments order by id desc"]
       (into [] results))))
 
+(defn approved []
+  (sql/with-connection db
+    (sql/with-query-results results
+      ["select * from comments where approved = true order by id desc"]
+      (into [] results))))
+
+(defn unapproved []
+  (sql/with-connection db
+    (sql/with-query-results results
+      ["select * from comments where approved = false order by id desc"]
+      (into [] results))))
+
 (defn create [body author]
   (sql/with-connection db
     (sql/insert-values :comments [:body :author] [body author])))

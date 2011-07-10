@@ -18,8 +18,18 @@
    (map
     (fn [comment]
       (list [:h2 {:class "comment"} (escape-html (:body comment))]
-            [:p "Created at: " (:created_at comment) " by " (:author comment)]))
+            [:p "Created at: " (:created_at comment) " by" (:author comment)]))
     comments)])
+
+(defn display-all-comments [approved-comments unapproved-comments]
+  (letfn [(display-comment [comment]
+            (list [:h2 {:class "comment"} (escape-html (:body comment))]
+                  [:p "Created at: " (:created_at comment) " by" (:author comment)]))]
+  [:div
+   [:h2 "Unapproved comments"]
+   (map display-comment unapproved-comments)
+   [:h2 "Approved comments"]
+   (map display-comment approved-comments)]))
 
 (defn index [comments]
   (layout/common "SHOUTER"
@@ -27,6 +37,6 @@
                  [:div {:class "clear"}]
                  (display-comments comments)))
 
-(defn comments-all [comments]
+(defn comments-all [approved-comments unapproved-comments]
   (layout/common "View all comments"
-                 (display-comments comments)))
+                 (display-all-comments approved-comments unapproved-comments)))

@@ -14,6 +14,7 @@
                       [:id :serial "PRIMARY KEY"]
                       [:body :varchar "NOT NULL"]
                       [:author :varchar "NOT NULL"]
+                      [:approved :boolean "NOT NULL" "DEFAULT false"]
                       [:created_at :timestamp "NOT NULL" "DEFAULT CURRENT_TIMESTAMP"])
     ))
 
