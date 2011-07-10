@@ -5,9 +5,9 @@
 (defn all []
   (sql/with-connection db
     (sql/with-query-results results
-      ["select * from shouts order by id desc"]
+      ["select * from comments order by id desc"]
       (into [] results))))
 
 (defn create [shout]
   (sql/with-connection db
-    (sql/insert-values :shouts [:body] [shout])))
+    (sql/insert-values :comments [:body] [shout])))
