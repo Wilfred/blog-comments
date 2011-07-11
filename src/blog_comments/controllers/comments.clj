@@ -11,8 +11,9 @@
 (defn comments-all []
   (view/comments-all (model/approved) (model/unapproved)))
 
+; note this will break if the URL contains something we can't convert to a int
 (defn comment-approve [id]
-  (model/approve! id)
+  (model/approve! (Integer/parseInt id))
   (ring/redirect "/comments/all"))
 
 (defn create [params]
