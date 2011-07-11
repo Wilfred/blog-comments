@@ -6,4 +6,7 @@
                  [ring/ring-jetty-adapter "0.3.10"]
                  [compojure "0.6.4"]
                  [hiccup "0.3.6"]]
-  :repositories {"sonatype-oss-public" "https://oss.sonatype.org/content/groups/public/"})
+  :dev-dependencies [[lein-ring "0.4.0"]]  
+  :repositories {"sonatype-oss-public" "https://oss.sonatype.org/content/groups/public/"}
+  :ring {:handler blog-comments.core/application})
+
