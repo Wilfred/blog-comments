@@ -11,6 +11,8 @@ Running:
 3. If the table isn't yet set up: `$ lein run -m blog-comments.models.migration`
 4. Start the server: `$ lein ring server`
 
+This will reload most code, but not routes.
+
 ## Deployment
 
 blog-comments is designed to run on Heroku. For the first deploy, do the following:
