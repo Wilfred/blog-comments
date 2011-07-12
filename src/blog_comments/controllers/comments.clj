@@ -5,9 +5,6 @@
             [blog-comments.views.comments :as view]
             [blog-comments.models.comment :as model]))
 
-(defn index []
-  (view/index (model/all)))
-
 (defn comments-all []
   (view/comments-all (model/approved) (model/unapproved)))
 
@@ -24,7 +21,7 @@
   (ring/redirect "/"))
 
 (defroutes routes
-  (GET  "/" [] (index))
+  (GET  "/" [] (ring/redirect "/comments/all"))
   (GET  "/comments/all" [] (comments-all))
   (GET  "/comments/:id/approve" [id] (comment-approve id))
   (POST "/" {params :params} (create params)))

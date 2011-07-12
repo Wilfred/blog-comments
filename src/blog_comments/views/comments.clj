@@ -33,12 +33,6 @@
    [:h2 "Approved comments"]
    (map display-comment approved-comments)]))
 
-(defn index [comments]
-  (layout/common "SHOUTER"
-                 (comment-form)
-                 [:div {:class "clear"}]
-                 (display-comments comments)))
-
 (defn comments-all [approved-comments unapproved-comments]
   (layout/common "View all comments"
                  (display-all-comments approved-comments unapproved-comments)))
