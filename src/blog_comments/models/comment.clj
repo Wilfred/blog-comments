@@ -21,17 +21,11 @@
       (into [] results))))
 
 (defn approve! [id]
-  (try
-    (sql/with-connection db
-      (sql/transaction
-       (sql/update-values :comments
-                          ["id = ?" id]
-                          {:approved true})))
-    (catch Exception e
-      (do (println e)
-          (let [cause (.getCause e)]
-            (do (println cause)
-                (println (.getNextException cause))))))))
+  (sql/with-connection db
+    (sql/transaction
+     (sql/update-values :comments
+                        ["id = ?" id]
+                        {:approved true}))))
 
 (defn create [body author]
   (sql/with-connection db
