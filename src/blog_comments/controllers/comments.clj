@@ -13,6 +13,10 @@
   (model/approve! (Integer/parseInt id))
   (ring/redirect "/comments/all"))
 
+(defn comment-unapprove [id]
+  (model/unapprove! (Integer/parseInt id))
+  (ring/redirect "/comments/all"))
+
 (defn comment-create []
   (view/comment-create))
 
@@ -28,4 +32,5 @@
   (GET  "/comments/all" [] (comments-all))
   (GET  "/comments/create" [] (comment-create))
   (GET  "/comments/:id/approve" [id] (comment-approve id))
+  (GET  "/comments/:id/unapprove" [id] (comment-unapprove id))
   (POST "/" {params :params} (create params)))

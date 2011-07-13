@@ -27,6 +27,13 @@
                         ["id = ?" id]
                         {:approved true}))))
 
+(defn unapprove! [id]
+  (sql/with-connection db
+    (sql/transaction
+     (sql/update-values :comments
+                        ["id = ?" id]
+                        {:approved false}))))
+
 (defn create [body author]
   (sql/with-connection db
     (sql/insert-values :comments [:body :author] [body author])))

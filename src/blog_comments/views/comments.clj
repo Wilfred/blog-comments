@@ -13,20 +13,13 @@
             (text-area "body")
             (submit-button "SHOUT!"))])
 
-(defn display-comments [comments]
-  [:div {:id "comments sixteen columns alpha omega"}
-   (map
-    (fn [comment]
-      (list [:h2 {:class "comment"} (escape-html (:body comment))]
-            [:p "Created at: " (:created_at comment) " by " (:author comment)]))
-    comments)])
-
 (defn display-all-comments [approved-comments unapproved-comments]
   (letfn [(display-comment [comment]
             (list [:h2 {:class "comment"} (escape-html (:body comment))]
                   [:p "Created at: " (:created_at comment) " by " (:author comment)]
                   (if (not (:approved comment))
-                    [:a {:href (str "/comments/" (:id comment) "/approve")} "Approve this comment"])))]
+                    [:a {:href (str "/comments/" (:id comment) "/approve")} "Approve this comment"]
+                    [:a {:href (str "/comments/" (:id comment) "/unapprove")} "Unapprove this comment"])))]
     (list [:a {:href "/comments/create"} "Create new comment"] [:div
           [:h2 "Unapproved comments"]
            (map display-comment unapproved-comments)
