@@ -27,12 +27,17 @@
                   [:p "Created at: " (:created_at comment) " by " (:author comment)]
                   (if (not (:approved comment))
                     [:a {:href (str "/comments/" (:id comment) "/approve")} "Approve this comment"])))]
-  [:div
-   [:h2 "Unapproved comments"]
-   (map display-comment unapproved-comments)
-   [:h2 "Approved comments"]
-   (map display-comment approved-comments)]))
+    (list [:a {:href "/comments/create"} "Create new comment"] [:div
+          [:h2 "Unapproved comments"]
+           (map display-comment unapproved-comments)
+           [:h2 "Approved comments"]
+           (map display-comment approved-comments)])))
 
 (defn comments-all [approved-comments unapproved-comments]
   (layout/common "View all comments"
                  (display-all-comments approved-comments unapproved-comments)))
+
+(defn comment-create []
+  (layout/common "New comment"
+                 [:h2 "Create a new comment"]
+                 (comment-form)))

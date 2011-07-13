@@ -13,6 +13,9 @@
   (model/approve! (Integer/parseInt id))
   (ring/redirect "/comments/all"))
 
+(defn comment-create []
+  (view/comment-create))
+
 (defn create [params]
   (let [body (:body params)
         author (:author params)]
@@ -23,5 +26,6 @@
 (defroutes routes
   (GET  "/" [] (ring/redirect "/comments/all"))
   (GET  "/comments/all" [] (comments-all))
+  (GET  "/comments/create" [] (comment-create))
   (GET  "/comments/:id/approve" [id] (comment-approve id))
   (POST "/" {params :params} (create params)))
