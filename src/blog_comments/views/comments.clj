@@ -5,7 +5,7 @@
   (:require [blog-comments.views.layout :as layout]))
 
 (defn comment-form []
-  [:div {:id "comment-form" :class "sixteen columns alpha omega"}
+  [:div {:id "comment-form"}
    (form-to [:post "/"]
             (label "author" "Name")
             (text-field "author")
