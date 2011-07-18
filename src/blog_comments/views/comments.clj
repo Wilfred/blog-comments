@@ -20,8 +20,9 @@
                   (if (not (:approved comment))
                     [:a {:href (str "/comments/" (:id comment) "/approve")} "Approve this comment"]
                     [:a {:href (str "/comments/" (:id comment) "/unapprove")} "Unapprove this comment"])))]
-    (list [:a {:href "/comments/create"} "Create new comment"] [:div
-          [:h2 "Unapproved comments"]
+    (list [:a {:href "/comments/create"} "Create new comment"]
+          [:div
+           [:h2 "Unapproved comments"]
            (map display-comment unapproved-comments)
            [:h2 "Approved comments"]
            (map display-comment approved-comments)])))
