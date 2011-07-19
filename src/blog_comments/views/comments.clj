@@ -1,7 +1,8 @@
 (ns blog-comments.views.comments
   (:use [hiccup.core :only [html escape-html]]
         [hiccup.form-helpers :only [form-to label text-area text-field submit-button]])
-  (:require [blog-comments.views.layout :as layout]))
+  (:require [blog-comments.views.layout :as layout]
+            [blog-comments.views.posts :as post-view]))
 
 (defn comment-form []
   [:div {:id "comment-form"}
@@ -19,11 +20,13 @@
           [:a {:href (str "/comments/" (:id comment) "/approve")} "Approve this comment"]
           [:a {:href (str "/comments/" (:id comment) "/unapprove")} "Unapprove this comment"])))
 
-(defn comments-all [approved-comments unapproved-comments]
+(defn comments-all [posts approved-comments unapproved-comments]
   (layout/common "View all comments"
                  [:p [:a {:href "/comments/create"} "Create new comment"]]
                  [:p [:a {:href "/posts/create"} "Create new post"]]
                  [:div
+                  [:h2 "Posts"]
+                  (map post-view/post-display posts)
                   [:h2 "Unapproved comments"]
                   (map display-comment unapproved-comments)
                   [:h2 "Approved comments"]

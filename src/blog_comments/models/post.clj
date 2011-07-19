@@ -5,3 +5,9 @@
 (defn create! [name]
   (sql/with-connection db
     (sql/insert-values :posts [:name] [name])))
+
+(defn all []
+  (sql/with-connection db
+    (sql/with-query-results results
+      ["select * from posts"]
+      (into [] results))))

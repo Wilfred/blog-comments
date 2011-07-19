@@ -15,3 +15,6 @@
   (layout/common "Create a new post"
                  [:h2 "Create new post"]
                  (post-form)))
+
+(defn post-display [post]
+  (list [:p "Post: " (:name post)]))

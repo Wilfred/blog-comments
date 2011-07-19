@@ -3,10 +3,11 @@
   (:require [clojure.string :as str]
             [ring.util.response :as response]
             [blog-comments.views.comments :as view]
-            [blog-comments.models.comment :as comment]))
+            [blog-comments.models.comment :as comment]
+            [blog-comments.models.post :as post]))
 
 (defn comments-all []
-  (view/comments-all (comment/approved) (comment/unapproved)))
+  (view/comments-all (post/all) (comment/approved) (comment/unapproved)))
 
 ; note this will break if the URL contains something we can't convert to a int
 (defn comment-approve [id]
