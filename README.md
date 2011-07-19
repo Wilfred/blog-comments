@@ -9,9 +9,22 @@ Running:
 1. Set database environment variable: `$ export DATABASE_URL=postgresql://localhost:5432/shouter`
 2. Install dependencies: `$ lein deps`
 3. If the table isn't yet set up: `$ lein run -m blog-comments.models.migration`
-4. Start the server: `$ lein ring server`
+4. Start the REPL: `$ lein repl`
+5. Enter the following:
 
-This will reload most code, but not routes.
+    user=> (require 'blog-comments.core)
+    nil
+    user=> (use 'ring.util.serve)
+    nil
+    user=> (serve blog-comments.core/application)
+    Started web server on port 3000
+    nil
+    
+When you want to reload your code:
+
+    user=> (require :reload-all 'blog-comments.core)
+    nil
+
 
 ## Deployment
 
