@@ -15,5 +15,4 @@
 
 (defn four-oh-four []
   (common "Page Not Found"
-          [:div {:id "four-oh-four"}
-           "The page you requested could not be found"]))
+          [:p "The page you requested could not be found"]))
