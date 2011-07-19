@@ -13,11 +13,11 @@
             (submit-button "SHOUT!"))])
 
 (defn display-comment [comment]
-            (list [:h2 {:class "comment"} (escape-html (:body comment))]
-                  [:p "Created at: " (:created_at comment) " by " (:author comment)]
-                  (if (not (:approved comment))
-                    [:a {:href (str "/comments/" (:id comment) "/approve")} "Approve this comment"]
-                    [:a {:href (str "/comments/" (:id comment) "/unapprove")} "Unapprove this comment"])))
+  (list [:h2 {:class "comment"} (escape-html (:body comment))]
+        [:p "Created at: " (:created_at comment) " by " (:author comment)]
+        (if (not (:approved comment))
+          [:a {:href (str "/comments/" (:id comment) "/approve")} "Approve this comment"]
+          [:a {:href (str "/comments/" (:id comment) "/unapprove")} "Unapprove this comment"])))
 
 (defn comments-all [approved-comments unapproved-comments]
   (layout/common "View all comments"
