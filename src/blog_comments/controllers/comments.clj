@@ -11,11 +11,11 @@
 ; note this will break if the URL contains something we can't convert to a int
 (defn comment-approve [id]
   (comment/approve! (Integer/parseInt id))
-  (ring/redirect "/comments/all"))
+  (response/redirect "/comments/all"))
 
 (defn comment-unapprove [id]
   (comment/unapprove! (Integer/parseInt id))
-  (ring/redirect "/comments/all"))
+  (response/redirect "/comments/all"))
 
 (defn comment-create []
   (view/comment-create))
@@ -28,7 +28,7 @@
   (response/redirect "/"))
 
 (defroutes routes
-  (GET  "/" [] (ring/redirect "/comments/all"))
+  (GET  "/" [] (response/redirect "/comments/all"))
 
   (GET  "/comments/all" [] (comments-all))
   (GET  "/comments/create" [] (comment-create))
