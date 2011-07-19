@@ -1,6 +1,5 @@
 (ns blog-comments.views.comments
   (:use [hiccup.core :only [html escape-html]]
-        [hiccup.page-helpers :only [doctype]]
         [hiccup.form-helpers :only [form-to label text-area text-field submit-button]])
   (:require [blog-comments.views.layout :as layout]))
 
