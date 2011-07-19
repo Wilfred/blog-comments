@@ -4,10 +4,12 @@
             [compojure.handler :as handler]
             [ring.adapter.jetty :as ring]
             [blog-comments.controllers.comments]
+            [blog-comments.controllers.posts]
             [blog-comments.views.layout :as layout]))
 
 (defroutes routes
   blog-comments.controllers.comments/routes
+  blog-comments.controllers.posts/routes
   (route/resources "/") ; static file handlers
   (route/not-found (layout/four-oh-four)))
 
