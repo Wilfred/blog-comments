@@ -1,7 +1,7 @@
 (ns blog-comments.controllers.comments
   (:use [compojure.core :only [defroutes GET POST]])
   (:require [clojure.string :as str]
-            [ring.util.response :as ring]
+            [ring.util.response :as response]
             [blog-comments.views.comments :as view]
             [blog-comments.models.comment :as model]))
 
@@ -25,12 +25,14 @@
         author (:author params)]
     (when-not (and (str/blank? body) (str/blank? author))
       (model/create body author)))
-  (ring/redirect "/"))
+  (response/redirect "/"))
 
 (defroutes routes
   (GET  "/" [] (ring/redirect "/comments/all"))
+
   (GET  "/comments/all" [] (comments-all))
   (GET  "/comments/create" [] (comment-create))
   (GET  "/comments/:id/approve" [id] (comment-approve id))
   (GET  "/comments/:id/unapprove" [id] (comment-unapprove id))
+
   (POST "/" {params :params} (create params)))
