@@ -6,11 +6,10 @@
 
 (defn post-form []
   [:div
-   (form-to [:post "/post/create"]
+   (form-to [:post "/posts/create"]
             (label "name" "Post name")
             (text-field "name")
             (submit-button "Create post"))])
-
 
 (defn post-create []
   (layout/common "Create a new post"
