@@ -5,6 +5,7 @@
 
 (defn comment-form []
   [:div {:id "comment-form"}
+   ; FIXME: sensible URL
    (form-to [:post "/"]
             (label "author" "Name")
             (text-field "author")
@@ -19,7 +20,8 @@
                   (if (not (:approved comment))
                     [:a {:href (str "/comments/" (:id comment) "/approve")} "Approve this comment"]
                     [:a {:href (str "/comments/" (:id comment) "/unapprove")} "Unapprove this comment"])))]
-    (list [:a {:href "/comments/create"} "Create new comment"]
+    (list [:p [:a {:href "/comments/create"} "Create new comment"]]
+          [:p [:a {:href "/posts/create"} "Create new post"]]
           [:div
            [:h2 "Unapproved comments"]
            (map display-comment unapproved-comments)
