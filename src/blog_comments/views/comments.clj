@@ -5,8 +5,7 @@
 
 (defn comment-form []
   [:div {:id "comment-form"}
-   ; FIXME: sensible URL
-   (form-to [:post "/"]
+   (form-to [:post "/comments/create"]
             (label "author" "Name")
             (text-field "author")
             (label "body" "Comment")

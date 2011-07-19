@@ -32,7 +32,6 @@
 
   (GET  "/comments/all" [] (comments-all))
   (GET  "/comments/create" [] (comment-create))
+  (POST "/comments-create" {params :params} (comment-create! params))
   (GET  "/comments/:id/approve" [id] (comment-approve id))
-  (GET  "/comments/:id/unapprove" [id] (comment-unapprove id))
-
-  (POST "/" {params :params} (comment-create! params)))
+  (GET  "/comments/:id/unapprove" [id] (comment-unapprove id)))
