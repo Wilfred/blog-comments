@@ -3,28 +3,28 @@
   (:require [clojure.string :as str]
             [ring.util.response :as response]
             [blog-comments.views.comments :as view]
-            [blog-comments.models.comment :as model]))
+            [blog-comments.models.comment :as comment]))
 
 (defn comments-all []
-  (view/comments-all (model/approved) (model/unapproved)))
+  (view/comments-all (comment/approved) (comment/unapproved)))
 
 ; note this will break if the URL contains something we can't convert to a int
 (defn comment-approve [id]
-  (model/approve! (Integer/parseInt id))
+  (comment/approve! (Integer/parseInt id))
   (ring/redirect "/comments/all"))
 
 (defn comment-unapprove [id]
-  (model/unapprove! (Integer/parseInt id))
+  (comment/unapprove! (Integer/parseInt id))
   (ring/redirect "/comments/all"))
 
 (defn comment-create []
   (view/comment-create))
 
-(defn create [params]
+(defn comment-create! [params]
   (let [body (:body params)
         author (:author params)]
     (when-not (and (str/blank? body) (str/blank? author))
-      (model/create body author)))
+      (comment/create body author)))
   (response/redirect "/"))
 
 (defroutes routes
@@ -35,4 +35,4 @@
   (GET  "/comments/:id/approve" [id] (comment-approve id))
   (GET  "/comments/:id/unapprove" [id] (comment-unapprove id))
 
-  (POST "/" {params :params} (create params)))
+  (POST "/" {params :params} (comment-create! params)))
