@@ -18,3 +18,8 @@
 
 (defn post-display [post]
   (list [:p "Post: " (:name post)]))
+
+(defn posts-all [posts]
+  (layout/common "All posts"
+                 [:h2 "All posts"]
+                 (map post-display posts)))

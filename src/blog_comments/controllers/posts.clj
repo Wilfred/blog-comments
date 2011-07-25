@@ -13,6 +13,10 @@
     (post/create! name))
   (response/redirect "/"))
 
+(defn posts-all []
+  (view/posts-all (post/all)))
+
 (defroutes routes
+  (GET "/posts/all" [] (posts-all))
   (GET "/posts/create" [] (post-create))
   (POST "/posts/create" {params :params} (post-create! params)))
